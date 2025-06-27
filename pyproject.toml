@@ -1,3 +1,20 @@
 [build-system]
-requires = ["setuptools", "wheel"]
+requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "podcast-downloader"
+version = "0.1.0"
+description = "A CLI tool to download YouTube podcast playlists as MP3s"
+authors = [
+    { name="Gauransh"}
+]
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.7"
+dependencies = [
+    "yt-dlp"
+]
+
+[project.scripts]
+podcast-downloader = "podcast_downloader.main:main"
