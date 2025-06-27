@@ -1,6 +1,10 @@
 import os
 import json
+import argparse
 import yt_dlp
+
+def fix_filename(title):
+    return "".join(c for c in title if c.isalnum() or c in " -_").rstrip()
 
 def download_podcast(playlist_url, output_dir):
     os.makedirs(output_dir, exist_ok=True)
@@ -39,3 +43,11 @@ def download_podcast(playlist_url, output_dir):
         json.dump(metadata_list, f, indent=2)
 
     print(f"\nDownloaded {len(metadata_list)} podcast episodes to '{output_dir}'.")
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="YouTube Podcast Downloader")
+    parser.add_argument("url", help="YouTube playlist or video URL")
+    parser.add_argument("-o", "--output", default="PodcastDownloads", help="Output directory")
+    args = parser.parse_args()
+
+    download_podcast(args.url, args.output)
