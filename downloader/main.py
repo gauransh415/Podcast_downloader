@@ -44,7 +44,7 @@ def download_podcast(playlist_url, output_dir):
 
     print(f"\nDownloaded {len(metadata_list)} podcast episodes to '{output_dir}'.")
 
-if __name__ == "__main__":
+def main():
     parser = argparse.ArgumentParser(description="YouTube Podcast Downloader")
     parser.add_argument("url", help="YouTube playlist or video URL")
     parser.add_argument("-o", "--output", default="PodcastDownloads", help="Output directory")
